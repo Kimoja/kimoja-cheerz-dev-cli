@@ -46,11 +46,11 @@ Commands:
 
 Les commandes sont définis dans le fichier `./commands/dev.json`.
 
-Chaque commandes est lié à une classe ou méthode se trouvant dans le dossier `./lib/cli`.
+Chaque commandes est soit évaluée en ruby depuis la propriété `eval` du JSON, soit lié à une classe ou méthode se trouvant dans le dossier `./lib/cli`.
 
-La namespace de la classe ou méthode doit suivre le chemin de la commande
+Le namespace de la classe ou méthode doit suivre le chemin de la commande
 
-Si une commandes nécessite beaucoup de code, le mieux est d'en faire une classe, sinon une méthode suffit.
+Si une commandes nécessite beaucoup de code, le mieux est d'en faire une classe, sinon une méthode suffit ou une évaluation.
 
 Les classes doivent définir la méthode `exec`
 

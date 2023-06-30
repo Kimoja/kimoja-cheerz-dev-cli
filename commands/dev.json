@@ -14,19 +14,23 @@
   "commands": {
 
     "code": {
-      "description": "Open vscode project"
+      "description": "Open vscode project",
+      "eval": "open_vscode(config.workspace_path, '')"
     },
 
     "github": {
-      "description": "Open Github repository"
+      "description": "Open Github repository",
+      "eval": "system_open(github_url)"
     },
 
     "zkrin": {
-      "description": "Open Zkrin"
+      "description": "Open Zkrin",
+      "eval": "system_open('https://zkrin.cheerz.com/dashboards/tech-server')"
     },
 
     "kport": {
       "description": "Kills open processes on ports",
+      "eval": "system_exec(\"kill -9 $(lsof -ti:#{arguments.ports})\")",
       "arguments": ["PORTS"]
     },
 

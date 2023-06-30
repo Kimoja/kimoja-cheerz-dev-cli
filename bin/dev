@@ -4,7 +4,11 @@ require_relative '../lib/cli'
 
 class Dev < Thor
 def self.config
-  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key"=>nil, "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/cli", "command_path"=>"dev"}.merge({})
+  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key"=>"b821099d-2114-2457-d06a-2cc2bfc1a6be:fx", "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/cli", "command_path"=>"dev"}.merge({})
+end
+
+::Cli::Command.define_method(:exec_code) do 
+  open_vscode(config.workspace_path, '')
 end
 
 desc("code", "Open vscode project")
@@ -13,8 +17,12 @@ def code()
  ::Cli::Command.new(
     ::Cli::Command::Arguments.new(), 
     ::Cli::Command::Options.new(options), 
-    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open vscode project", "command_path"=>"dev code"}))
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open vscode project", "eval"=>"open_vscode(config.workspace_path, '')", "command_path"=>"dev code"}))
 ).exec
+end
+
+::Cli::Command.define_method(:exec_github) do 
+  system_open(github_url)
 end
 
 desc("github", "Open Github repository")
@@ -23,8 +31,12 @@ def github()
  ::Cli::Command.new(
     ::Cli::Command::Arguments.new(), 
     ::Cli::Command::Options.new(options), 
-    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Github repository", "command_path"=>"dev github"}))
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Github repository", "eval"=>"system_open(github_url)", "command_path"=>"dev github"}))
 ).exec
+end
+
+::Cli::Command.define_method(:exec_zkrin) do 
+  system_open('https://zkrin.cheerz.com/dashboards/tech-server')
 end
 
 desc("zkrin", "Open Zkrin")
@@ -33,8 +45,12 @@ def zkrin()
  ::Cli::Command.new(
     ::Cli::Command::Arguments.new(), 
     ::Cli::Command::Options.new(options), 
-    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Zkrin", "command_path"=>"dev zkrin"}))
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Zkrin", "eval"=>"system_open('https://zkrin.cheerz.com/dashboards/tech-server')", "command_path"=>"dev zkrin"}))
 ).exec
+end
+
+::Cli::Command.define_method(:exec_kport) do 
+  system_exec("kill -9 $(lsof -ti:#{arguments.ports})")
 end
 
 desc("kport PORTS", "Kills open processes on ports")
@@ -43,9 +59,10 @@ def kport(ports)
  ::Cli::Command.new(
     ::Cli::Command::Arguments.new(ports: ports), 
     ::Cli::Command::Options.new(options), 
-    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Kills open processes on ports", "arguments"=>["PORTS"], "command_path"=>"dev kport"}))
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Kills open processes on ports", "eval"=>"system_exec(\"kill -9 $(lsof -ti:\#{arguments.ports})\")", "arguments"=>["PORTS"], "command_path"=>"dev kport"}))
 ).exec
 end
+
 
 desc("todo *TODO", "Add a todo and open the todolist file, format: my todo description")
 method_options({})
@@ -56,6 +73,7 @@ def todo(*todo)
     ::Cli::Command::Todo::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"todo", "description"=>"Add a todo and open the todolist file, format: my todo description", "arguments"=>["*TODO"], "command_path"=>"dev todo"}))
 ).exec
 end
+
 
 desc("tag *TAGS", "Search by tags, format: tag1 tag2 tag3")
 method_options({})
@@ -72,6 +90,7 @@ def self.config
   {"zsh_alias"=>"json", "command_path"=>"dev json"}.merge(::Dev.config)
 end
 
+
 desc("format JSON", "Format passed or in clipboard JSON")
 method_options({})
 def format(json = nil)
@@ -82,6 +101,7 @@ def format(json = nil)
 ).exec
 end
 
+
 desc("to_ruby JSON", "Transforms passed or in clipboard JSON to Ruby")
 method_options({})
 def to_ruby(json = nil)
@@ -91,6 +111,7 @@ def to_ruby(json = nil)
     ::Cli::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Transforms passed or in clipboard JSON to Ruby", "arguments"=>["JSON?"], "command_path"=>"dev json to_ruby"}))
 ).exec
 end
+
 
 desc("eval to_eval", "Transforms passed or in clipboard JS or Ruby to JSON")
 method_options({})
@@ -111,6 +132,7 @@ def self.config
   {"command_path"=>"dev tr"}.merge(::Dev.config)
 end
 
+
 desc("en *TEXT", "Translate the text in English")
 method_options({})
 def en(*text)
@@ -120,6 +142,7 @@ def en(*text)
     ::Cli::Command::Tr::Config.new(::Dev::Tr.config.dup.merge({"zsh_alias"=>"en", "description"=>"Translate the text in English", "arguments"=>["*TEXT"], "command_path"=>"dev tr en"}))
 ).exec
 end
+
 
 desc("fr *TEXT", "Translate the text in french")
 method_options({})

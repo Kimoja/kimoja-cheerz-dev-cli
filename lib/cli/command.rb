@@ -11,22 +11,6 @@ module Cli
     class Arguments
       include Cli::Concerns::Clipboard
     end
-
-    def exec_github
-      system_open(github_url)
-    end
-
-    def exec_code
-      open_vscode(config.workspace_path, '')
-    end
-
-    def exec_zkrin
-      system_open(config.workspace_path, 'https://zkrin.cheerz.com/dashboards/tech-server')
-    end
-
-    def exec_kport
-      system_exec("kill -9 $(lsof -ti:#{arguments.ports})")
-    end
   end
 end
 
