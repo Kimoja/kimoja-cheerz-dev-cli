@@ -6,7 +6,7 @@
       "workspace_path": "[OVERRIDDEN_IN_CUSTO]",
       "github_owner": "[OVERRIDDEN_IN_CUSTO]",
       "todo_path": "[OVERRIDDEN_IN_CUSTO]",
-      "deepl_api_key_env_name": "[OVERRIDDEN_IN_CUSTO]",
+      "deepl_api_key": "[OVERRIDDEN_IN_CUSTO]",
       "tags_paths": "[OVERRIDDEN_IN_CUSTO]"
     }
   ],

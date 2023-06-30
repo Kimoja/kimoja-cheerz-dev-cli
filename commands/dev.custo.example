@@ -4,7 +4,7 @@
     "workspace_path": "/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli",
     "github_owner": "Kimoja",
     "todo_path": "/Users/joakimcarrilho/dev/todo.md",
-    "deepl_api_key_env_name": "DEEPL_API_KEY",
+    "deepl_api_key": null,
     "tags_paths": ["#{workspace_path}/tags"]
   }
 }

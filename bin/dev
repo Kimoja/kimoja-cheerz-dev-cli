@@ -4,7 +4,7 @@ require_relative '../lib/cli'
 
 class Dev < Thor
 def self.config
-  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key_env_name"=>"DEEPL_API_KEY", "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/cli", "command_path"=>"dev"}.merge({})
+  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key"=>nil, "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/cli", "command_path"=>"dev"}.merge({})
 end
 
 desc("code", "Open vscode project")
