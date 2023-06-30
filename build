@@ -11,7 +11,7 @@ require_relative "./lib/toolbox"
 
 Generathor::Build.new(
   Generathor::Build::Config.new(
-    commands_glob: File.expand_path("./commands/*.json"), 
+    commands_glob: File.expand_path("./commands/dev.json"), 
     lib_path: File.expand_path("./lib/toolbox"),
     lib_namespace: "Toolbox::Command",
     bin_path: File.expand_path("./bin"),

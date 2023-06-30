@@ -13,7 +13,7 @@ Ensemble d'outil CLI construit avec https://github.com/Kimoja/generathor:
 
 # Installation
 
-- Ouvrir le fichier `commands/dev.json` et modifier la valeur de la propriété `workspace_path`. Renseigner le chemin absolue du dossier du repo
+- Copier le fichier `commands/dev.custo.example`, le renommer en `commands/dev.custo` et modifier les propriétés en fonction de vos besoins, notamment `workspace_path` qui doit pointer le chemin absolue du dossier du repo, `todo_path`, et `tags_paths` si vous voulez pas utiliser celui par défaut
 - `bundle install`, pour installer les dépendances
 - `./build`, pour build la CLI. En fonction de votre OS et environement vous pourriez être amené à modifie la configuration passé à Generathor depuis ce fichier de build
 
