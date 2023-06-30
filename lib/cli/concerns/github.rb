@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Toolbox
+module Cli
   module Concerns
     module Github
       def github_url

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Toolbox
+module Cli
   class Command
-    class Json < Toolbox::Command
+    class Json < Cli::Command
       arguments(:to_eval) { |to_eval| to_eval || clipboard_paste }
       arguments(:json) { |json| json || clipboard_paste }
 

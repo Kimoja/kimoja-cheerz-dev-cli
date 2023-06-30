@@ -7,15 +7,15 @@ Bundler.setup(:default)
 
 require "generathor"
 
-require_relative "./lib/toolbox"
+require_relative "./lib/cli"
 
 Generathor::Build.new(
   Generathor::Build::Config.new(
     commands_glob: File.expand_path("./commands/dev.json"), 
-    lib_path: File.expand_path("./lib/toolbox"),
-    lib_namespace: "Toolbox::Command",
+    lib_path: File.expand_path("./lib/cli"),
+    lib_namespace: "Cli::Command",
     bin_path: File.expand_path("./bin"),
     zshrc_path: "#{Dir.home}/.zshrc",
-    zsh_sources_path: "#{Dir.home}/.zsh_toolbox_sources"
+    zsh_sources_path: "#{Dir.home}/.zsh_cli_sources"
   )
 ).build

@@ -46,7 +46,7 @@ Commands:
 
 Les commandes sont définis dans le fichier `./commands/dev.json`.
 
-Chaque commandes est lié à une classe ou méthode se trouvant dans le dossier `./lib/toolbox`.
+Chaque commandes est lié à une classe ou méthode se trouvant dans le dossier `./lib/cli`.
 
 La namespace de la classe ou méthode doit suivre le chemin de la commande
 

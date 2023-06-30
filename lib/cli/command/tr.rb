@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Toolbox
+module Cli
   class Command
-    class Tr < Toolbox::Command
+    class Tr < Cli::Command
       arguments(:text) { |text| text.empty? ? clipboard_paste : text * ' ' }
 
       def exec_en

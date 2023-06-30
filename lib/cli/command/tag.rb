@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require "tempfile"
 
-module Toolbox
+module Cli
   class Command
-    class Tag < Toolbox::Command
+    class Tag < Cli::Command
       config(:tags_paths) do |tags_paths|
         tags_paths
           .map { |path| binding.eval("\"#{path}\"") }

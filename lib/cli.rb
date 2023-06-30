@@ -8,7 +8,7 @@ require 'tags_finder'
 require 'clipboard'
 require 'faraday'
 
-module Toolbox; end
+module Cli; end
 
-require_relative 'toolbox/concerns'
-require_relative 'toolbox/command'
+require_relative 'cli/concerns'
+require_relative 'cli/command'

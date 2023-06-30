@@ -1,69 +1,69 @@
 #!/usr/bin/env ruby
 require 'thor'
-require_relative '../lib/toolbox'
+require_relative '../lib/cli'
 
 class Dev < Thor
 def self.config
-  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"KimojaZZZZZ", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key_env_name"=>"DEEPL_API_KEY", "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/toolbox", "command_path"=>"dev"}.merge({})
+  {"module_name"=>"dev", "repo_name"=>"kimoja-cheerz-dev-cli", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "todo_path"=>"/Users/joakimcarrilho/dev/todo.md", "deepl_api_key_env_name"=>"DEEPL_API_KEY", "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/cli", "command_path"=>"dev"}.merge({})
 end
 
 desc("code", "Open vscode project")
 method_options({})
 def code()
- ::Toolbox::Command.new(
-    ::Toolbox::Command::Arguments.new(), 
-    ::Toolbox::Command::Options.new(options), 
-    ::Toolbox::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open vscode project", "command_path"=>"dev code"}))
+ ::Cli::Command.new(
+    ::Cli::Command::Arguments.new(), 
+    ::Cli::Command::Options.new(options), 
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open vscode project", "command_path"=>"dev code"}))
 ).exec
 end
 
 desc("github", "Open Github repository")
 method_options({})
 def github()
- ::Toolbox::Command.new(
-    ::Toolbox::Command::Arguments.new(), 
-    ::Toolbox::Command::Options.new(options), 
-    ::Toolbox::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Github repository", "command_path"=>"dev github"}))
+ ::Cli::Command.new(
+    ::Cli::Command::Arguments.new(), 
+    ::Cli::Command::Options.new(options), 
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Github repository", "command_path"=>"dev github"}))
 ).exec
 end
 
 desc("zkrin", "Open Zkrin")
 method_options({})
 def zkrin()
- ::Toolbox::Command.new(
-    ::Toolbox::Command::Arguments.new(), 
-    ::Toolbox::Command::Options.new(options), 
-    ::Toolbox::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Zkrin", "command_path"=>"dev zkrin"}))
+ ::Cli::Command.new(
+    ::Cli::Command::Arguments.new(), 
+    ::Cli::Command::Options.new(options), 
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Open Zkrin", "command_path"=>"dev zkrin"}))
 ).exec
 end
 
 desc("kport PORTS", "Kills open processes on ports")
 method_options({})
 def kport(ports)
- ::Toolbox::Command.new(
-    ::Toolbox::Command::Arguments.new(ports: ports), 
-    ::Toolbox::Command::Options.new(options), 
-    ::Toolbox::Command::Config.new(::Dev.config.dup.merge({"description"=>"Kills open processes on ports", "arguments"=>["PORTS"], "command_path"=>"dev kport"}))
+ ::Cli::Command.new(
+    ::Cli::Command::Arguments.new(ports: ports), 
+    ::Cli::Command::Options.new(options), 
+    ::Cli::Command::Config.new(::Dev.config.dup.merge({"description"=>"Kills open processes on ports", "arguments"=>["PORTS"], "command_path"=>"dev kport"}))
 ).exec
 end
 
 desc("todo *TODO", "Add a todo and open the todolist file, format: my todo description")
 method_options({})
 def todo(*todo)
- ::Toolbox::Command::Todo.new(
-    ::Toolbox::Command::Todo::Arguments.new(todo: todo), 
-    ::Toolbox::Command::Todo::Options.new(options), 
-    ::Toolbox::Command::Todo::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"todo", "description"=>"Add a todo and open the todolist file, format: my todo description", "arguments"=>["*TODO"], "command_path"=>"dev todo"}))
+ ::Cli::Command::Todo.new(
+    ::Cli::Command::Todo::Arguments.new(todo: todo), 
+    ::Cli::Command::Todo::Options.new(options), 
+    ::Cli::Command::Todo::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"todo", "description"=>"Add a todo and open the todolist file, format: my todo description", "arguments"=>["*TODO"], "command_path"=>"dev todo"}))
 ).exec
 end
 
 desc("tag *TAGS", "Search by tags, format: tag1 tag2 tag3")
 method_options({})
 def tag(*tags)
- ::Toolbox::Command::Tag.new(
-    ::Toolbox::Command::Tag::Arguments.new(tags: tags), 
-    ::Toolbox::Command::Tag::Options.new(options), 
-    ::Toolbox::Command::Tag::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"tag", "description"=>"Search by tags, format: tag1 tag2 tag3", "arguments"=>["*TAGS"], "command_path"=>"dev tag"}))
+ ::Cli::Command::Tag.new(
+    ::Cli::Command::Tag::Arguments.new(tags: tags), 
+    ::Cli::Command::Tag::Options.new(options), 
+    ::Cli::Command::Tag::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"tag", "description"=>"Search by tags, format: tag1 tag2 tag3", "arguments"=>["*TAGS"], "command_path"=>"dev tag"}))
 ).exec
 end
 
@@ -75,30 +75,30 @@ end
 desc("format JSON", "Format passed or in clipboard JSON")
 method_options({})
 def format(json = nil)
- ::Toolbox::Command::Json.new(
-    ::Toolbox::Command::Json::Arguments.new(json: json), 
-    ::Toolbox::Command::Json::Options.new(options), 
-    ::Toolbox::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Format passed or in clipboard JSON", "arguments"=>["JSON?"], "command_path"=>"dev json format"}))
+ ::Cli::Command::Json.new(
+    ::Cli::Command::Json::Arguments.new(json: json), 
+    ::Cli::Command::Json::Options.new(options), 
+    ::Cli::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Format passed or in clipboard JSON", "arguments"=>["JSON?"], "command_path"=>"dev json format"}))
 ).exec
 end
 
 desc("to_ruby JSON", "Transforms passed or in clipboard JSON to Ruby")
 method_options({})
 def to_ruby(json = nil)
- ::Toolbox::Command::Json.new(
-    ::Toolbox::Command::Json::Arguments.new(json: json), 
-    ::Toolbox::Command::Json::Options.new(options), 
-    ::Toolbox::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Transforms passed or in clipboard JSON to Ruby", "arguments"=>["JSON?"], "command_path"=>"dev json to_ruby"}))
+ ::Cli::Command::Json.new(
+    ::Cli::Command::Json::Arguments.new(json: json), 
+    ::Cli::Command::Json::Options.new(options), 
+    ::Cli::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Transforms passed or in clipboard JSON to Ruby", "arguments"=>["JSON?"], "command_path"=>"dev json to_ruby"}))
 ).exec
 end
 
 desc("eval to_eval", "Transforms passed or in clipboard JS or Ruby to JSON")
 method_options({})
 def eval(to_eval = nil)
- ::Toolbox::Command::Json.new(
-    ::Toolbox::Command::Json::Arguments.new(to_eval: to_eval), 
-    ::Toolbox::Command::Json::Options.new(options), 
-    ::Toolbox::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Transforms passed or in clipboard JS or Ruby to JSON", "arguments"=>["to_eval?"], "command_path"=>"dev json eval"}))
+ ::Cli::Command::Json.new(
+    ::Cli::Command::Json::Arguments.new(to_eval: to_eval), 
+    ::Cli::Command::Json::Options.new(options), 
+    ::Cli::Command::Json::Config.new(::Dev::Json.config.dup.merge({"description"=>"Transforms passed or in clipboard JS or Ruby to JSON", "arguments"=>["to_eval?"], "command_path"=>"dev json eval"}))
 ).exec
 end
 
@@ -114,20 +114,20 @@ end
 desc("en *TEXT", "Translate the text in English")
 method_options({})
 def en(*text)
- ::Toolbox::Command::Tr.new(
-    ::Toolbox::Command::Tr::Arguments.new(text: text), 
-    ::Toolbox::Command::Tr::Options.new(options), 
-    ::Toolbox::Command::Tr::Config.new(::Dev::Tr.config.dup.merge({"zsh_alias"=>"en", "description"=>"Translate the text in English", "arguments"=>["*TEXT"], "command_path"=>"dev tr en"}))
+ ::Cli::Command::Tr.new(
+    ::Cli::Command::Tr::Arguments.new(text: text), 
+    ::Cli::Command::Tr::Options.new(options), 
+    ::Cli::Command::Tr::Config.new(::Dev::Tr.config.dup.merge({"zsh_alias"=>"en", "description"=>"Translate the text in English", "arguments"=>["*TEXT"], "command_path"=>"dev tr en"}))
 ).exec
 end
 
 desc("fr *TEXT", "Translate the text in french")
 method_options({})
 def fr(*text)
- ::Toolbox::Command::Tr.new(
-    ::Toolbox::Command::Tr::Arguments.new(text: text), 
-    ::Toolbox::Command::Tr::Options.new(options), 
-    ::Toolbox::Command::Tr::Config.new(::Dev::Tr.config.dup.merge({"zsh_alias"=>"fr", "description"=>"Translate the text in french", "arguments"=>["*TEXT"], "command_path"=>"dev tr fr"}))
+ ::Cli::Command::Tr.new(
+    ::Cli::Command::Tr::Arguments.new(text: text), 
+    ::Cli::Command::Tr::Options.new(options), 
+    ::Cli::Command::Tr::Config.new(::Dev::Tr.config.dup.merge({"zsh_alias"=>"fr", "description"=>"Translate the text in french", "arguments"=>["*TEXT"], "command_path"=>"dev tr fr"}))
 ).exec
 end
 

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-module Toolbox
+module Cli
   class Command < Generathor::Command
-    include Toolbox::Concerns::System
-    include Toolbox::Concerns::Shell
-    include Toolbox::Concerns::Clipboard
-    include Toolbox::Concerns::Github
-    include Toolbox::Concerns::Code
+    include Cli::Concerns::System
+    include Cli::Concerns::Shell
+    include Cli::Concerns::Clipboard
+    include Cli::Concerns::Github
+    include Cli::Concerns::Code
 
     class Arguments
-      include Toolbox::Concerns::Clipboard
+      include Cli::Concerns::Clipboard
     end
 
     def exec_github

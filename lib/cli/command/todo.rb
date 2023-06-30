@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Toolbox
+module Cli
   class Command
-    class Todo < Toolbox::Command
+    class Todo < Cli::Command
       config(:todo_path) do |todo_path|
         binding.eval("\"#{todo_path}\"")
       end
