@@ -13,6 +13,7 @@ Ensemble d'outil CLI construit avec https://github.com/Kimoja/generathor:
 
 # Installation
 
+- Ouvrir le fichier `commands/dev.json` et modifier la valeur de la propriété `workspace_path`. Renseigner le chemin absolue du dossier du repo
 - `bundle install`, pour installer les dépendances
 - `./build`, pour build la CLI. En fonction de votre OS et environement vous pourriez être amené à modifie la configuration passé à Generathor depuis ce fichier de build
 

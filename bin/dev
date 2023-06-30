@@ -4,7 +4,7 @@ require_relative '../lib/toolbox'
 
 class Dev < Thor
 def self.config
-  {"module_name"=>"dev", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox", "github_owner"=>"Kimoja", "repo_name"=>"toolbox", "todo_path"=>"\#{workspace_path}/../todo.md", "deepl_api_key_env_name"=>"DEEPL_API_KEY", "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/toolbox", "command_path"=>"dev"}.merge({})
+  {"module_name"=>"dev", "workspace_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli", "github_owner"=>"Kimoja", "repo_name"=>"toolbox", "todo_path"=>"\#{workspace_path}/todo.md", "deepl_api_key_env_name"=>"DEEPL_API_KEY", "tags_paths"=>["\#{workspace_path}/tags"], "lib_path"=>"/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli/lib/toolbox", "command_path"=>"dev"}.merge({})
 end
 
 desc("code", "Open vscode project")
@@ -63,7 +63,7 @@ def tag(*tags)
  ::Toolbox::Command::Tag.new(
     ::Toolbox::Command::Tag::Arguments.new(tags: tags), 
     ::Toolbox::Command::Tag::Options.new(options), 
-    ::Toolbox::Command::Tag::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"tag", "description"=>"Search by tags, format: tag1 tag2 tag3", "tags_paths"=>["\#{workspace_path}/tags"], "arguments"=>["*TAGS"], "command_path"=>"dev tag"}))
+    ::Toolbox::Command::Tag::Config.new(::Dev.config.dup.merge({"zsh_alias"=>"tag", "description"=>"Search by tags, format: tag1 tag2 tag3", "arguments"=>["*TAGS"], "command_path"=>"dev tag"}))
 ).exec
 end
 

@@ -2,11 +2,12 @@
   "modules": [
     {
       "module_name": "dev",
-      "workspace_path": "/Users/joakimcarrilho/dev/tools/toolbox",
+      "workspace_path": "/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli",
       "github_owner": "Kimoja",
       "repo_name": "toolbox",
-      "todo_path": "#{workspace_path}/../todo.md",
-      "deepl_api_key_env_name": "DEEPL_API_KEY"
+      "todo_path": "#{workspace_path}/todo.md",
+      "deepl_api_key_env_name": "DEEPL_API_KEY",
+      "tags_paths": ["#{workspace_path}/tags"]
     }
   ],
 
@@ -38,7 +39,6 @@
     "tag": {
       "zsh_alias": "tag",
       "description": "Search by tags, format: tag1 tag2 tag3",
-      "tags_paths": ["#{workspace_path}/tags"],
       "arguments": ["*TAGS"]
     },
 
