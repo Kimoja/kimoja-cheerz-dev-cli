@@ -1,0 +1,78 @@
+{
+  "modules": [
+    {
+      "module_name": "dev",
+      "workspace_path": "/Users/joakimcarrilho/dev/tools/toolbox",
+      "github_owner": "Kimoja",
+      "repo_name": "toolbox",
+      "todo_path": "#{workspace_path}/../todo.md",
+      "deepl_api_key_env_name": "DEEPL_API_KEY"
+    }
+  ],
+
+  "commands": {
+
+    "code": {
+      "description": "Open vscode project"
+    },
+
+    "github": {
+      "description": "Open Github repository"
+    },
+
+    "zkrin": {
+      "description": "Open Zkrin"
+    },
+
+    "kport": {
+      "description": "Kills open processes on ports",
+      "arguments": ["PORTS"]
+    },
+
+    "todo": {
+      "zsh_alias": "todo",
+      "description": "Add a todo and open the todolist file, format: my todo description",
+      "arguments": ["*TODO"]
+    },
+
+    "tag": {
+      "zsh_alias": "tag",
+      "description": "Search by tags, format: tag1 tag2 tag3",
+      "tags_paths": ["#{workspace_path}/tags"],
+      "arguments": ["*TAGS"]
+    },
+
+    "json": {
+      "zsh_alias": "json",
+      "commands": {
+        "format": {
+          "description": "Format passed or in clipboard JSON",
+          "arguments": ["JSON?"]
+        },
+        "to_ruby": {
+          "description": "Transforms passed or in clipboard JSON to Ruby",
+          "arguments": ["JSON?"]
+        },
+        "eval": {
+          "description": "Transforms passed or in clipboard JS or Ruby to JSON",
+          "arguments": ["to_eval?"]
+        }
+      }
+    },
+
+    "tr": {
+      "commands": {
+        "en": {
+          "zsh_alias": "en",
+          "description": "Translate the text in English",
+          "arguments": ["*TEXT"]
+        },
+        "fr": {
+          "zsh_alias": "fr",
+          "description": "Translate the text in french",
+          "arguments": ["*TEXT"]
+        }
+      }
+    }
+  }
+}

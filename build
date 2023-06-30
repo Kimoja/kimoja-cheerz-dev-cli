@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require "bundler"
+Bundler.setup(:default)
+
+require "generathor"
+
+require_relative "./lib/toolbox"
+
+Generathor::Build.new(
+  Generathor::Build::Config.new(
+    commands_glob: File.expand_path("./commands/*.json"), 
+    lib_path: File.expand_path("./lib/toolbox"),
+    lib_namespace: "Toolbox::Command",
+    bin_path: File.expand_path("./bin"),
+    zshrc_path: "#{Dir.home}/.zshrc",
+    zsh_sources_path: "#{Dir.home}/.zsh_toolbox_sources"
+  )
+).build
