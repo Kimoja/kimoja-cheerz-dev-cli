@@ -1,6 +1,6 @@
 # Description 
 
-Ensemble d'utilisataire CLI construit avec https://github.com/Kimoja/generathor:
+Ensemble d'outil CLI construit avec https://github.com/Kimoja/generathor:
 - Génère une CLI à partir d'un fichier JSON.
 - Gère l'autocompletion
 - Permet de définir des alias ZSH
@@ -44,12 +44,19 @@ Commands:
 # Configuration, customization
 
 Les commandes sont définis dans le fichier `./commands/dev.json`.
+
 Chaque commandes est lié à une classe ou méthode se trouvant dans le dossier `./lib/toolbox`.
+
 La namespace de la classe ou méthode doit suivre le chemin de la commande
+
 Si une commandes nécessite beaucoup de code, le mieux est d'en faire une classe, sinon une méthode suffit.
+
 Les classes doivent définir la méthode `exec`
+
 Les méthodes de commandes se nomment suivant le patter: `exec_[COMAND_NAME]`
+
 On peut définir des getters pour les options et arguments de la commande via les méthodes de classe `arguments` et `config`
+
 Pour ajouter une commande, il faut donc l'ajouter dans le fichier JSON puis définir le comportement dans une classe ou méthode ruby.
 
 Si vous souhaiter utiliser cet outil, merci de fork le repo et d'indiquer dans ce readme le lien du fork
