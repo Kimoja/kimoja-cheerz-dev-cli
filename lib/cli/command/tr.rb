@@ -32,8 +32,10 @@ module Cli
 
       private def api_key
         @api_key ||= begin
-          api_key = config.deepl_api_key
-          error("Missing config deepl_api_key", true) unless api_key 
+          api_key = config.deepl_api_key || ENV["DEEPL_API_KEY"]
+          unless api_key 
+            error("Missing config deepl_api_key or DEEPL_API_KEY env var", true)
+          end
           
           api_key
         end

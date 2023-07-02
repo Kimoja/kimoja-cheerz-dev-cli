@@ -1,0 +1,8 @@
+{
+  "repo_name": "kimoja-cheerz-dev-cli",
+  "workspace_path": "/Users/joakimcarrilho/dev/tools/toolbox/kimoja-cheerz-dev-cli",
+  "github_owner": "Kimoja",
+  "todo_path": "/Users/joakimcarrilho/dev/todo.md",
+  "deepl_api_key": "ATATT3xFfGF0FtdopHqOcQVzFaCEcvIWQfWHbn7eGiGoma4KACTG-FXgxS3JW1NHCroCgdwNoJWLFpXmgVDZV2Ey2juIB3Un4kUtxKDMcs3fU_4NlBgDUjI0vCofkizjuYqkbRSuYeZFUE3G5oL-IDmTnoVH0dVuzeBEP512dH4v9jb3c41Q2Ms=4CE61684",
+  "tags_paths": ["#{workspace_path}/tags"]
+}

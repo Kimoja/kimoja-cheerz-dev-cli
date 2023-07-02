@@ -11,11 +11,11 @@ require_relative "./lib/cli"
 
 Generathor::Build.new(
   Generathor::Build::Config.new(
-    commands_glob: File.expand_path("./commands/dev.json"), 
+    command_name: "dev", 
+    command_path: File.expand_path("./command/dev.json"), 
     lib_path: File.expand_path("./lib/cli"),
     lib_namespace: "Cli::Command",
     bin_path: File.expand_path("./bin"),
-    zshrc_path: "#{Dir.home}/.zshrc",
-    zsh_sources_path: "#{Dir.home}/.zsh_cli_sources"
+    zshrc_path: "#{Dir.home}/.zshrc"
   )
 ).build

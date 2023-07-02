@@ -1,15 +1,12 @@
 {
-  "modules": [
-    {
-      "module_name": "dev",
-      "repo_name": "[OVERRIDDEN_IN_CUSTO]",
-      "workspace_path": "[OVERRIDDEN_IN_CUSTO]",
-      "github_owner": "[OVERRIDDEN_IN_CUSTO]",
-      "todo_path": "[OVERRIDDEN_IN_CUSTO]",
-      "deepl_api_key": "[OVERRIDDEN_IN_CUSTO]",
-      "tags_paths": "[OVERRIDDEN_IN_CUSTO]"
-    }
-  ],
+  "config": {
+    "repo_name": "[TO_CONFIGURE]",
+    "workspace_path": "[TO_CONFIGURE]",
+    "github_owner": "[TO_CONFIGURE]",
+    "todo_path": "[TO_CONFIGURE]",
+    "deepl_api_key": "[TO_CONFIGURE]",
+    "tags_paths": "[TO_CONFIGURE]"
+  },
 
   "commands": {
 
@@ -18,31 +15,31 @@
       "eval": "open_vscode(config.workspace_path, '')"
     },
 
-    "github": {
+    "gh": {
       "description": "Open Github repository",
       "eval": "system_open(github_url)"
     },
 
-    "zkrin": {
+    "srv": {
       "description": "Open Zkrin",
       "eval": "system_open('https://zkrin.cheerz.com/dashboards/tech-server')"
     },
 
     "kport": {
-      "description": "Kills open processes on ports",
+      "description": "Kills open processes on given ports",
       "eval": "system_exec(\"kill -9 $(lsof -ti:#{arguments.ports})\")",
       "arguments": ["PORTS"]
     },
 
     "todo": {
       "zsh_alias": "todo",
-      "description": "Add a todo and open the todolist file, format: my todo description",
+      "description": "Add a todo and open the todolist file, format: dev todo description of my todo",
       "arguments": ["*TODO"]
     },
 
     "tag": {
       "zsh_alias": "tag",
-      "description": "Search by tags, format: tag1 tag2 tag3",
+      "description": "Search by tags, format: dev tag tag1 tag2 tag3",
       "arguments": ["*TAGS"]
     },
 

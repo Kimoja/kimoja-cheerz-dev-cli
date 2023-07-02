@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/Kimoja/generathor
-  revision: d2a45e80cd6e81e7f3fcc9b83fc37efab3e90de3
+PATH
+  remote: ../gems/generathor
   specs:
     generathor (0.1.0)
       thor
